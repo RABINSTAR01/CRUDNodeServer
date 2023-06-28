@@ -1,0 +1,34 @@
+
+ <h2>Items</h2>
+
+ <table>
+   <tr>
+     <th>Name</th>
+     <th>Description</th>
+     <th></th>
+     <th></th>
+   </tr>
+   <tr *ngFor="let item of items" class="fade-in">
+     <td>{{ item.Name }}</td>
+     <td>{{ item.Description }}</td>
+     <td>
+       <button (click)="updateItem(item)" class="slide-in update-button">Update</button>
+     </td>
+     <td>
+       <button (click)="deleteItem(item.Id)" class="slide-in delete-button">Delete</button>
+     </td>
+   </tr>
+ </table>
+ 
+ <h3>Create New Item</h3>
+ <div class="fade-in">
+   <input #nameInput placeholder="Name"><br/><br/>
+   <input #descriptionInput placeholder="Description"><br/> <br/>
+   <button (click)="createItem(nameInput.value, descriptionInput.value)" class="create-button">Create</button>
+ </div> 
+ 
+ <div class="message-container">
+   <p *ngIf="successMessage" class="success-message">{{ successMessage }}</p>
+   <p *ngIf="errorMessage" class="error-message">{{ errorMessage }}</p>
+ </div>
+ 
